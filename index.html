@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northgate Supply LLC</title>
+<meta name="description" content="Northgate Supply LLC is a Massachusetts company focused on the wholesale and retail sale of merchandise, including online sales.">
+<style>
+  :root{--bg:#f7f8fa;--ink:#16202c;--muted:#5a6675;--brand:#1f3a5f;--accent:#c8872b;--card:#fff;--line:#e3e7ec}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{background:var(--brand);color:#fff}
+  header .wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 20px}
+  .logo{font-weight:700;letter-spacing:.04em;font-size:1.1rem}
+  .logo span{color:var(--accent)}
+  nav a{color:#dbe4f0;text-decoration:none;margin-left:20px;font-size:.95rem}
+  nav a:hover{color:#fff}
+  .hero{background:linear-gradient(135deg,#1f3a5f,#2b4f7e);color:#fff;padding:72px 0}
+  .hero h1{font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.15;margin:0 0 14px;max-width:640px}
+  .hero p{max-width:560px;color:#dbe4f0;font-size:1.1rem;margin:0 0 28px}
+  .btn{display:inline-block;background:var(--accent);color:#1b1305;padding:12px 24px;border-radius:6px;text-decoration:none;font-weight:600}
+  section{padding:56px 0}
+  h2{font-size:1.5rem;margin:0 0 20px;color:var(--brand)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px}
+  .card h3{margin:0 0 8px;font-size:1.05rem}
+  .card p{margin:0;color:var(--muted);font-size:.97rem}
+  .contact{background:var(--card);border-top:1px solid var(--line)}
+  .contact a{color:var(--brand);font-weight:600}
+  footer{background:#111a26;color:#9aa8ba;padding:24px 0;font-size:.9rem}
+
+  /* Animated hero */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#1f3a5f,#2b4f7e,#1b3050,#2b4f7e);background-size:300% 300%;animation:flow 14s ease infinite}
+  .hero .wrap{position:relative;z-index:2}
+  @keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .boxes{position:absolute;inset:0;z-index:1;pointer-events:none}
+  .box{position:absolute;bottom:-60px;width:44px;height:44px;border:2px solid rgba(255,255,255,.28);border-radius:6px;background:rgba(255,255,255,.06);animation:rise linear infinite}
+  .box::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:rgba(200,135,43,.55);transform:translateX(-50%)}
+  @keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-520px) rotate(120deg);opacity:0}}
+  .box:nth-child(1){left:6%;animation-duration:15s;animation-delay:0s}
+  .box:nth-child(2){left:20%;width:30px;height:30px;animation-duration:12s;animation-delay:3s}
+  .box:nth-child(3){left:38%;width:56px;height:56px;animation-duration:18s;animation-delay:1s}
+  .box:nth-child(4){left:55%;width:34px;height:34px;animation-duration:13s;animation-delay:5s}
+  .box:nth-child(5){left:72%;width:50px;height:50px;animation-duration:16s;animation-delay:2s}
+  .box:nth-child(6){left:88%;width:28px;height:28px;animation-duration:11s;animation-delay:6s}
+  .hero h1,.hero p,.hero .btn{animation:slide .9s ease both}
+  .hero p{animation-delay:.15s}.hero .btn{animation-delay:.3s}
+  @keyframes slide{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  .btn{transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+
+  /* Delivery truck */
+  .hero{padding-bottom:128px}
+  .road{position:absolute;left:0;right:0;bottom:0;height:46px;background:#16202c;z-index:1}
+  .road::before{content:"";position:absolute;left:0;right:0;top:21px;height:4px;background:repeating-linear-gradient(90deg,#e8c27a 0 34px,transparent 34px 68px);animation:dash 1.2s linear infinite}
+  @keyframes dash{to{background-position:-68px 0}}
+  .truck{position:absolute;bottom:30px;left:0;width:150px;z-index:2;animation:drive 16s linear infinite}
+  @keyframes drive{from{transform:translateX(-170px)}to{transform:translateX(calc(100vw + 20px))}}
+  .truck svg{display:block;width:100%;height:auto;animation:bump .5s ease-in-out infinite}
+  @keyframes bump{50%{transform:translateY(-1.5px)}}
+  .wheel{transform-box:fill-box;transform-origin:center;animation:spin .6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .skyline{position:absolute;left:0;right:0;bottom:46px;height:60px;z-index:0;opacity:.18;background:
+    linear-gradient(#fff,#fff) 4% 100%/40px 38px no-repeat,
+    linear-gradient(#fff,#fff) 12% 100%/30px 56px no-repeat,
+    linear-gradient(#fff,#fff) 22% 100%/54px 30px no-repeat,
+    linear-gradient(#fff,#fff) 40% 100%/36px 48px no-repeat,
+    linear-gradient(#fff,#fff) 58% 100%/60px 34px no-repeat,
+    linear-gradient(#fff,#fff) 74% 100%/34px 58px no-repeat,
+    linear-gradient(#fff,#fff) 90% 100%/46px 40px no-repeat}
+
+  /* More content */
+  .ico{width:42px;height:42px;border-radius:50%;background:#e9eef6;color:var(--brand);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:12px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;counter-reset:s}
+  .step{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:8px;padding:20px}
+  .step span{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--brand);color:#fff;align-items:center;justify-content:center;font-weight:700;margin-bottom:10px}
+  .step h3{margin:0 0 6px;font-size:1.05rem}.step p{margin:0;color:var(--muted);font-size:.95rem}
+  .two{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
+  @media(max-width:760px){.two{grid-template-columns:1fr}}
+  .checks{list-style:none;padding:0;margin:16px 0 24px}
+  .checks li{padding-left:28px;position:relative;margin-bottom:8px}
+  .checks li::before{content:"\2713";position:absolute;left:0;top:0;color:#fff;background:var(--accent);width:20px;height:20px;border-radius:50%;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+  .panel{background:var(--brand);color:#fff;border-radius:10px;padding:26px}
+  .panel h3{margin:0 0 14px;color:#fff}
+  .panel dt{color:#e8c27a;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;margin-top:12px}
+  .panel dd{margin:2px 0 0}
+  details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600;color:var(--brand)}
+  details p{margin:10px 0 0;color:var(--muted)}
+  footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-bottom:20px}
+  footer h4{color:#fff;margin:0 0 8px}
+  footer a{color:#c9d4e3;text-decoration:none}
+  footer a:hover{color:#fff}
+  footer .copy{border-top:1px solid #243247;padding-top:16px}
+  html{scroll-behavior:smooth}
+
+  /* Cards appear on scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .card{transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(31,58,95,.12)}
+
+  @media (prefers-reduced-motion:reduce){
+    .hero,.box,.hero h1,.hero p,.hero .btn,.truck,.truck svg,.wheel,.road::before{animation:none}
+    .truck{transform:translateX(40px)}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logo">NORTHGATE <span>SUPPLY</span></div>
+    <nav><a href="#about">About</a><a href="#what">What we do</a><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="boxes" aria-hidden="true"><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i><i class="box"></i></div>
+  <div class="skyline" aria-hidden="true"></div>
+  <div class="road" aria-hidden="true"></div>
+  <div class="truck" aria-hidden="true">
+    <svg viewBox="0 0 150 70" xmlns="http://www.w3.org/2000/svg">
+      <rect x="4" y="8" width="86" height="42" rx="3" fill="#f4f6f9"/>
+      <rect x="10" y="14" width="22" height="16" rx="2" fill="#c8872b"/>
+      <rect x="36" y="14" width="22" height="16" rx="2" fill="#d99a40"/>
+      <rect x="62" y="14" width="22" height="16" rx="2" fill="#c8872b"/>
+      <rect x="10" y="34" width="30" height="12" rx="2" fill="#d99a40"/>
+      <rect x="44" y="34" width="22" height="12" rx="2" fill="#c8872b"/>
+      <path d="M90 20h26l14 16v14H90z" fill="#c8872b"/>
+      <path d="M96 25h17l9 11H96z" fill="#cfe3f5"/>
+      <rect x="4" y="50" width="126" height="6" rx="2" fill="#2a3b52"/>
+      <rect x="126" y="44" width="6" height="6" fill="#ffe9a8"/>
+      <g class="wheel"><circle cx="30" cy="58" r="9" fill="#10161e"/><circle cx="30" cy="58" r="4" fill="#9aa8ba"/><path d="M30 52v12M24 58h12" stroke="#10161e" stroke-width="2"/></g>
+      <g class="wheel"><circle cx="64" cy="58" r="9" fill="#10161e"/><circle cx="64" cy="58" r="4" fill="#9aa8ba"/><path d="M64 52v12M58 58h12" stroke="#10161e" stroke-width="2"/></g>
+      <g class="wheel"><circle cx="112" cy="58" r="9" fill="#10161e"/><circle cx="112" cy="58" r="4" fill="#9aa8ba"/><path d="M112 52v12M106 58h12" stroke="#10161e" stroke-width="2"/></g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <h1>Reliable supply for retail and online sellers.</h1>
+    <p>Northgate Supply LLC buys and sells quality merchandise at wholesale and retail, with a focus on clear communication and dependable service.</p>
+    <a class="btn" href="#contact">Get in touch</a>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <h2>About us</h2>
+    <p>Northgate Supply LLC is a Massachusetts limited liability company based in Lowell, MA. We source brand-name products and sell them through established online marketplaces and other retail channels.</p>
+  </div>
+</section>
+
+<section id="what" style="background:#eef1f5">
+  <div class="wrap">
+    <h2>What we do</h2>
+    <div class="grid">
+      <div class="card reveal"><h3>Wholesale purchasing</h3><p>We build direct relationships with brands and authorized distributors.</p></div>
+      <div class="card reveal" style="transition-delay:.12s"><h3>Online retail</h3><p>We sell to customers through online marketplaces and our own channels.</p></div>
+      <div class="card reveal" style="transition-delay:.24s"><h3>Customer service</h3><p>Questions and orders get a fast, friendly reply from a real person.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Why work with us</h2>
+    <div class="grid">
+      <div class="card reveal"><div class="ico">&#10003;</div><h3>Authentic products</h3><p>We buy only from brands and authorized distributors, so every item is genuine.</p></div>
+      <div class="card reveal" style="transition-delay:.12s"><div class="ico">&#9993;</div><h3>Clear communication</h3><p>Straight answers, quick replies and no surprises on orders or invoices.</p></div>
+      <div class="card reveal" style="transition-delay:.24s"><div class="ico">&#9873;</div><h3>Registered business</h3><p>A Massachusetts LLC, set up properly to do business with distributors and marketplaces.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:#eef1f5">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step reveal"><span>1</span><h3>Source</h3><p>We select products with solid demand from trusted brands and distributors.</p></div>
+      <div class="step reveal" style="transition-delay:.12s"><span>2</span><h3>Receive &amp; check</h3><p>Every shipment is inspected and stored with care.</p></div>
+      <div class="step reveal" style="transition-delay:.24s"><span>3</span><h3>Sell</h3><p>Products are listed and sold through online marketplaces and retail channels.</p></div>
+      <div class="step reveal" style="transition-delay:.36s"><span>4</span><h3>Deliver</h3><p>Orders ship promptly, and customers get support if anything is needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="distributors">
+  <div class="wrap two">
+    <div>
+      <h2>For distributors and brands</h2>
+      <p>We are always looking to open new wholesale accounts. If you are a brand or authorized distributor, we would be glad to hear from you.</p>
+      <ul class="checks">
+        <li>Business registration details available on request</li>
+        <li>Resale documentation available on request</li>
+        <li>Dedicated contact for orders and invoices</li>
+        <li>Reorders handled quickly and on a schedule</li>
+      </ul>
+      <a class="btn" href="mailto:info@northgatesupplyllc.com?subject=Wholesale%20account%20inquiry">Request an account</a>
+    </div>
+    <div class="panel reveal">
+      <h3>Quick facts</h3>
+      <dl>
+        <dt>Company</dt><dd>Northgate Supply LLC</dd>
+        <dt>Type</dt><dd>Massachusetts limited liability company</dd>
+        <dt>Location</dt><dd>Lowell, MA</dd>
+        <dt>Business</dt><dd>Wholesale and retail sale of merchandise, including online</dd>
+        <dt>Contact</dt><dd>info@northgatesupplyllc.com</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:#eef1f5">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <details class="reveal"><summary>What kinds of products do you sell?</summary><p>We focus on established, in-demand consumer products from known brands. Our catalog grows as we open new supplier accounts.</p></details>
+    <details class="reveal"><summary>Do you buy directly from brands?</summary><p>Yes. We buy from brands and authorized distributors only, never from unverified sources.</p></details>
+    <details class="reveal"><summary>How can a distributor open an account with us?</summary><p>Send us an email at info@northgatesupplyllc.com with your account application or a short introduction, and we will reply within one business day.</p></details>
+    <details class="reveal"><summary>Where are you located?</summary><p>We operate from Lowell, Massachusetts, USA.</p></details>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p><strong>Northgate Supply LLC</strong><br>Lowell, Massachusetts, USA<br>
+    Email: <a href="mailto:info@northgatesupplyllc.com">info@northgatesupplyllc.com</a></p>
+    <p>Distributors and brand representatives: please email us to discuss opening a wholesale account.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><h4>Northgate Supply LLC</h4><p style="margin:0">Wholesale and retail merchandise.<br>Lowell, Massachusetts, USA</p></div>
+      <div><h4>Explore</h4><a href="#about">About</a><br><a href="#why">Why us</a><br><a href="#how">How it works</a><br><a href="#faq">FAQ</a></div>
+      <div><h4>Contact</h4><a href="mailto:info@northgatesupplyllc.com">info@northgatesupplyllc.com</a></div>
+    </div>
+    <div class="copy">&copy; 2026 Northgate Supply LLC. All rights reserved.</div>
+  </div>
+</footer>
+<script>
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.2 });
+    els.forEach(function (el) { io.observe(el); });
+  } else {
+    els.forEach(function (el) { el.classList.add('in'); });
+  }
+</script>
+</body>
+</html>
